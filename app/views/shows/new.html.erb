@@ -1,0 +1,14 @@
+<h1>Add a New Show</h1>
+
+<%= form_with(model: @show, url: shows_path, method: :post) do |form| %>
+  <%= form.label :movie_id, 'Select Movie' %>
+  <%= form.collection_select :movie_id, Movie.all, :id, :title %>
+  
+  <%= form.label :venue_id, 'Select Venue' %>
+  <%= form.collection_select :venue_id, Venue.all, :id, :name %>
+  
+  <%= form.label :start_time, 'Showtime' %>
+  <%= form.datetime_field :start_time %>
+  
+  <%= form.submit 'Create Show' %>
+<% end %>

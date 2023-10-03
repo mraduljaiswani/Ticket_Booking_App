@@ -1,0 +1,31 @@
+/* app/assets/stylesheets/seat_grid.css.scss */
+
+.seat {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #c5e1a5; /* Available seats */
+    cursor: pointer;
+    border-color: black;
+    border: solid;
+  }
+  
+  .seat.available {
+    background-color: #eef1f5; /* Selected seats */
+    color: #ddd9d9;
+  
+}
+
+  .seat.selected {
+    background-color: #007bff; /* Selected seats */
+    color: #100a0a;
+  
+}
+  
+  .seat.booked {
+    background-color: #6c706c; /* Booked seats */
+    color: #100a0a;
+    cursor: not-allowed;
+  }
+  

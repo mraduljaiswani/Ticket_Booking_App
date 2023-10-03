@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Your Layout Title</title>
+    <style>
+      body {
+      background-color: #9fb9e5;
+      font-family: Arial, sans-serif;
+      }
+      h1 {color: yellow;}
+      .Newmovie{
+      color: red;
+      }
+      .Edit{
+      padding: 50px;
+      size: 100px
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Movies</h1>
+    <%= link_to "Add New Movie", new_movie_path, class: "Newmovie"  %>
+    <ul>
+      <% @movies.each do |movie| %>
+        <li>
+          <%= link_to movie.title, movie_path(movie) %>
+          &emsp; &emsp; 
+          <%= link_to movie.imdb_link , movie_path(movie)%>
+          <br>
+          <br>  
+          <%= link_to "Edit", edit_movie_path(movie) %>
+          &emsp; &emsp; 
+          <%= link_to 'Delete',
+  movie_path(movie),
+  data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
+        </li>
+        <br>
+        <br>
+        <br>
+      <% end %>
+    </ul>
+  </body>
+</html>

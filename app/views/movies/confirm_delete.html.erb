@@ -1,0 +1,6 @@
+<h1>Confirm Delete Movie</h1>
+
+<p>Are you sure you want to delete this movie?</p>
+
+<%= link_to "Delete", movie_path(@movie), method: :delete, class: 'btn btn-danger' %>
+<%= link_to "Cancel", movie_path(@movie), class: 'btn btn-primary' %>

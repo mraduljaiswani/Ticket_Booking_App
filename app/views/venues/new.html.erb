@@ -1,0 +1,19 @@
+<h1>Add New Venue</h1>
+
+<%= form_with(model: @venue, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create Venue" %>
+  </div>
+<% end %>
+
+<%= link_to "Back to Venues", venues_path %>

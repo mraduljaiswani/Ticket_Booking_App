@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <title>Show page</title>
+    <%= stylesheet_link_tag 'seat_grid', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <script type="text/javascript">
+    function showMessage() {
+
+      var flashMessage = document.getElementById('flash-message');
+
+
+      if (flashMessage) {
+        flashMessage.innerHTML = 'Tickets are booked successfully';
+        flashMessage.style.display = 'block';
+        setTimeout(() => {
+      window.location.href = '/shows';
+    }, 3000);
+
+      }
+    }
+  </script>
+  <style>
+    #flash-message {
+      position: fixed;
+      top: 0; 
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      color: #fff; 
+      padding: 10px;
+      z-index: 1000;
+      text-align: center; 
+    }
+  </style>
+  <body>
+    <h1>Show Details</h1>
+    <p><strong>Movie:</strong> <%= @show.movie.title %></p>
+    <p><strong>Venue:</strong> <%= @show.venue.name %></p>
+    <p><strong>Showtime:</strong> <%= @show.start_time.strftime('%A, %b %d, %Y %I:%M %p') %></p>
+    <h1>Select Seats for <%= @show.movie.title %> at <%= @show.venue.name %></h1>
+    <br>
+    <div id="seat-grid">
+      <div id="seat-grid-container">
+        <% @seats.each do |seat| %>
+          <% status_class = seat.status == 'booked' ? 'booked' : 'available' %>
+          <div class="seat <%= status_class %>" data-seat-number= "<%= seat.seat_number %>" data-seat-status="<%= status_class %>">
+            <%= seat.seat_number %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= form_with(model: @booking, url: bookings_path, method: :post) do |form| %>
+    
+    <%= form.hidden_field :show_id, value: @show.id %>
+    <%= form.hidden_field :selected_seats, id: "selected-seats" %>
+    
+    <%= form.submit "Book Seats", class: "btn btn-primary", id: 'book-button', onclick: 'showMessage()' %>
+    <div id="flash-message" style="display: none;"></div>
+  <% end %>
+  <br>
+  <br>
+ 
+</div>
+
+<%= link_to 'Back to Shows', shows_path %>
+</body>
+</html>

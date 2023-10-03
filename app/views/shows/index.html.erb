@@ -1,0 +1,25 @@
+<h1>Shows</h1>
+<% if @shows.any? %>
+  <% @shows.each do |show| %>
+    <h2> <%= show.movie.title %></h2>
+    <h2> <%= show.venue.name %> </h2>
+    <li>
+      <%= link_to " #{show.start_time.strftime(' %b %d %I:%M %p')} ", show_path(show) %>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No shows found for the selected movie.</p>
+<% end %>
+<% if @show %>
+  <h2>Select Seats for <%= @show.movie.title %> at <%= @show.venue.name %></h2>
+  <%= form_with(model: @booking, url: bookings_path, method: :post) do |form| %>
+    <div id="seat-map"></div>
+    <%= form.hidden_field :show_id, value: @show.id %>
+    <%= form.hidden_field :selected_seats, id: "selected-seats" %>
+    <%= form.submit "Book Seats" %>
+  <% end %>
+<% end %>
+<br>
+<br>
+<br>
+<%= link_to 'Add a New Show', new_show_path %>

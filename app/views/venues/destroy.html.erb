@@ -1,0 +1,14 @@
+<h1>Delete Venue</h1>
+
+<p>Are you sure you want to delete the following venue?</p>
+
+<dl>
+  <dt>Name:</dt>
+  <dd><%= @venue.name %></dd>
+
+  <dt>Location:</dt>
+  <dd><%= @venue.location %></dd>
+</dl>
+
+<%= link_to "Confirm Delete", @venue, method: :delete, class: 'btn btn-danger' %>
+<%= link_to "Cancel", venues_path, class: 'btn btn-primary' %>

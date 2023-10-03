@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  show: one
+  user: one
+  selected_seats: MyText
+
+two:
+  show: two
+  user: two
+  selected_seats: MyText

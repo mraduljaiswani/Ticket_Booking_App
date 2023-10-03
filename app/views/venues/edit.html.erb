@@ -1,0 +1,21 @@
+<h1>Edit Venue</h1>
+
+<%# <%= form_with(model: @venue, local: true) do |form| %>
+<%= form_with(model: @venue, url: venue_path(@venue), method: :patch) do |form| %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update Venue" %>
+  </div>
+<% end %>
+
+<%= link_to "Cancel", venue_path(@venue) %>

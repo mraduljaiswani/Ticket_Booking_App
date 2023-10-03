@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MovieTheaterApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'jquery3' %>
+    <%= stylesheet_link_tag 'application' %>
+    <%# <%= javascript_include_tag 'seating' %>
+  </head>
+  <style>
+    body {
+      background-color: ##f2d1d1;
+      font-family: Arial, sans-serif;
+    }
+
+    .header {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px;
+    }
+
+    .content {
+      margin: 20px;
+    }
+  </style>
+  <script src="<%= asset_path('seating.js') %>"></script>
+  <body>
+    <nav>
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <br>
+        <li><%= link_to "Movies", movies_path %></li>
+        <br>
+        <li><%= link_to "Venues", venues_path %></li>
+        <br>
+        <li><%= link_to "Shows", shows_path %></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
