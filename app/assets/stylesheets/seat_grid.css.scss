@@ -8,12 +8,15 @@
     background-color: #c5e1a5; /* Available seats */
     cursor: pointer;
     border-color: black;
-    border: solid;
+    border: 1px solid black;
+    padding: 10px;
+    
   }
   
   .seat.available {
     background-color: #eef1f5; /* Selected seats */
-    color: #ddd9d9;
+    color: #180505;
+    
   
 }
 
